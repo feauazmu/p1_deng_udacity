@@ -34,15 +34,15 @@ create table songs (song_id varchar(18) primary key,
                     title varchar,
                     artist_id varchar,
                     year int,
-                    duration number);
+                    duration numeric);
 """
 
 artist_table_create = """
 create table artists (artist_id varchar(18) primary key,
                       name varchar,
                       location varchar,
-                      latitude number,
-                      longitude number);
+                      latitude numeric,
+                      longitude numeric);
 """
 
 time_table_create = """
