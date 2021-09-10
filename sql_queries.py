@@ -9,7 +9,7 @@ time_table_drop = "drop table time;"
 # CREATE TABLES
 
 songplay_table_create = """
-create table if not exists songplays (songplay_id int primary key,
+create table if not exists songplays (songplay_id serial primary key,
                                       start_time timestamp,
                                       user_id int,
                                       level varchar(4),
@@ -57,14 +57,15 @@ create table if not exists time (start_time timestamp primary key,
 # INSERT RECORDS
 
 songplay_table_insert = """
-insert into songplays (songplay_id, start_time, user_id, level, song_id,
+insert into songplays (start_time, user_id, level, song_id,
                        artist_id, session_id, location, user_agent)
-values (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+values (%s, %s, %s, %s, %s, %s, %s, %s)
 """
 
 user_table_insert = """
 insert into users (user_id, first_name, last_name, gender, level)
 values (%s, %s, %s, %s, %s)
+on conflict (user_id) do nothing
 """
 
 song_table_insert = """
@@ -75,11 +76,13 @@ values (%s, %s, %s, %s, %s)
 artist_table_insert = """
 insert into artists (artist_id, name, location, latitude, longitude)
 values (%s, %s, %s, %s, %s)
+on conflict (artist_id) do nothing
 """
 
 time_table_insert = """
 insert into time (start_time, hour, day, week, month, year, weekday)
 values (%s, %s, %s, %s, %s, %s, %s)
+on conflict (start_time) do nothing
 """
 
 # FIND SONGS
