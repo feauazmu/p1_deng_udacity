@@ -117,6 +117,18 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """Processes the data depending on the function.
+
+    It takes a global filepath and processes the JSON files one by one within
+    that filepath according to the `func` function, then commits the changes to
+    the database to which the connection is made.
+
+    Args:
+        cur (cursor): A cursor to the `conn` connection.
+        conn (connection): A connection to a PostgreSQL database.
+        filepath (string): Global path where the JSON files are located.
+        func (function): Function to process each file.
+    """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -136,6 +148,7 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """Processes the log and song files."""
     conn = psycopg2.connect(
         "host=127.0.0.1 dbname=sparkifydb user=student password=student"
     )
