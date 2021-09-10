@@ -6,6 +6,16 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """Processes the song file information.
+
+    Takes the filepath of a JSON file with metadata about the song and the
+    artist of the song, and inserts the relevant information into the tables
+    `songs` and `artists` of the `sparkifydb`.
+
+    Args:
+        cur (cursor): A cursor to the connection to the `sparkifydb`.
+        filepath (string): The path of the JSON file.
+    """
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -29,6 +39,17 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """Processes the log file information.
+
+    Takes the filepath of a JSON file with the activity logs from the music
+    streaming app, process this information, and inserts the relevant
+    information into the tables `users`, `time`, and `songplays` of the
+    `sparkifydb`.
+
+    Args:
+        cur (cursor): A cursor to the connection to the `sparkifydb`.
+        filepath (string): The path of the JSON file.
+    """
     # open log file
     df = pd.read_json(filepath, lines=True)
 
