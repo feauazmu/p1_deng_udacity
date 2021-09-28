@@ -9,3 +9,5 @@ ipython_config.py
 
 # pre-commit
 .pre-commit-config.yaml
+
+.idea/
