@@ -13,3 +13,5 @@ The idea of the project is to create an ETL pipeline using Python and SQL to tra
 ## Database schema design
 
 The schema used for this database is a [*star schema*](https://en.wikipedia.org/wiki/Star_schema).  It consists of a fact table and four dimension tables and is structured as shown below.
+
+![Schema](https://github.com/feauazmu/p1_deng_udacity/blob/main/static/schema.png)
