@@ -15,3 +15,25 @@ The idea of the project is to create an ETL pipeline using Python and SQL to tra
 The schema used for this database is a [*star schema*](https://en.wikipedia.org/wiki/Star_schema).  It consists of a fact table and four dimension tables and is structured as shown below.
 
 ![Schema](https://github.com/feauazmu/p1_deng_udacity/blob/main/static/schema.png?)
+
+## Prerequisites
+
+To run the project locally successfully it is necessary to have a PostgreSQL database named `studentdb` and a user named `student` with writing permissions.  This database was created as an exercise in the course.
+
+It is also required to have `Python` installed, along with the `pandas`, `psycopg2` and `sql_queries` packages.
+
+## Running the project.
+
+The functions used in building the database can be found in `create_tables.py`.  To create the database and the tables described above it is necessary to run this script.
+
+```bash
+python create_tables.py
+```
+
+Then you can fill in the data by running the script `etl.py`
+
+```bash
+python etl.py
+```
+
+In order to test if the data was added correctly you can follow the notebook `test.ipynb`.
