@@ -10,8 +10,8 @@ time_table_drop = "drop table time;"
 
 songplay_table_create = """
 create table if not exists songplays (songplay_id serial primary key,
-                                      start_time timestamp,
-                                      user_id int,
+                                      start_time timestamp not null,
+                                      user_id int not null,
                                       level varchar(4),
                                       song_id varchar(18),
                                       artist_id varchar(18),
@@ -65,12 +65,13 @@ values (%s, %s, %s, %s, %s, %s, %s, %s)
 user_table_insert = """
 insert into users (user_id, first_name, last_name, gender, level)
 values (%s, %s, %s, %s, %s)
-on conflict (user_id) do nothing
+on conflict (user_id) do update set level=excluded.level
 """
 
 song_table_insert = """
 insert into songs (song_id, title, artist_id, year, duration)
 values (%s, %s, %s, %s, %s)
+on conflict (song_id) do nothing
 """
 
 artist_table_insert = """
